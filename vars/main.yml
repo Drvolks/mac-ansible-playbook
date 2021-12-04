@@ -7,12 +7,6 @@ homebrew_installed_packages:
   - ssh-copy-id
   - trash
 
-homebrew_cask_appdir: /Applications
-
-homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
-
 mas_installed_apps: []
 mas_email: ""
 mas_password: ""

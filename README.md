@@ -9,6 +9,9 @@ brew install ansible
 ## Execution
 ansible-playbook playbook.yml --tags work,home
 
+## Missing apps
+Choosey
+
 ## References
 https://github.com/geerlingguy/mac-dev-playbook
 https://github.com/geerlingguy/ansible-collection-mac

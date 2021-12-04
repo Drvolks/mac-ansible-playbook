@@ -24,6 +24,21 @@
     - import_tasks: tasks/sublimetext.yml
       tags: ['always']
 
+    - include: tasks/zip-install.yml appName="iStat Menus.app" dmgURL=https://cdn.bjango.com/files/istatmenus6/istatmenus6.61.zip
+      tags: ['always']
+
+    - include: tasks/zip-install.yml appName="apache-maven-3.8.4" dmgURL=https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
+      tags: ['always']
+
+    - include: tasks/dmg-install.yml appName="IntelliJ IDEA" dmgURL=https://download.jetbrains.com/idea/ideaIU-2021.3-aarch64.dmg
+      tags: ['work']
+
+    - include: tasks/dmg-install.yml appName="Viscosity" dmgURL=https://www.sparklabs.com/downloads/Viscosity.dmg
+      tags: ['work']
+
+    - include: tasks/dmg-install.yml appName="TablePlus" dmgURL=https://download.tableplus.com/macos/396/TablePlus.dmg
+      tags: ['work']
+
     - name: Copy dotfiles into home folder.
       command: cp dotfiles/{{ item }} {{ dotfiles_home }}/{{ item }}
       become: false
@@ -37,10 +52,6 @@
         - utis
       tags: ['always']
 
-    - name: Finder default settings
-      command: /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
-      tags: ['always']
+    - import_tasks: tasks/finder.yml
 
-    - name: Restart finder
-      command: killall Finder
-      tags: ['always']
+    

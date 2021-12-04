@@ -1,0 +1,19 @@
+---
+- local_action: stat path='/Applications/{{ appName }}'
+  register: app_exists
+
+- name: Download {{ appName }} zip
+  get_url: url={{ dmgURL }} dest='{{ downloads }}/{{ appName }}.zip'
+  when: app_exists.stat.exists == False
+
+- name: Unzip {{ appName }}
+  command: unzip '{{ downloads }}/{{ appName }}.zip' -d {{ downloads }}
+  when: app_exists.stat.exists == False
+
+- name: Install {{ appName }}
+  shell: mv '{{ downloads }}/{{ appName }}' '/Applications/{{ appName }}'
+  when: app_exists.stat.exists == False
+
+- name: Remove {{ appName }} zip
+  command: rm '{{ downloads }}/{{ appName }}.zip'
+  when: app_exists.stat.exists == False
