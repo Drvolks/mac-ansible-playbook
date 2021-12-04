@@ -11,6 +11,7 @@
   tasks:
     - name: Upgrade all homebrew packages
       homebrew: update_homebrew=yes upgrade_all=yes
+      tags: ['always']
 
     - name: Install homebrew packages
       homebrew:
@@ -18,5 +19,28 @@
         install_options: "{{ item.install_options | default(omit) }}"
         state: "{{ item.state | default('present') }}"
       loop: "{{ homebrew_installed_packages }}"
+      tags: ['always']
 
-    - include: tasks/dmg-install.yml appName="Sublime Text" dmgURL=https://download.sublimetext.com/Sublime%20Text%20Build%203211.dmg
+    - import_tasks: tasks/sublimetext.yml
+      tags: ['always']
+
+    - name: Copy dotfiles into home folder.
+      command: cp dotfiles/{{ item }} {{ dotfiles_home }}/{{ item }}
+      become: false
+      with_items: "{{ dotfiles_files }}"
+      tags: ['always']
+
+    - name: Check file type association
+      command: "duti -s {{ item.0.bundle_id }} {{ item.1 }} all"
+      with_subelements:
+        - "{{ default_apps_associations }}"
+        - utis
+      tags: ['always']
+
+    - name: Finder default settings
+      command: /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+      tags: ['always']
+
+    - name: Restart finder
+      command: killall Finder
+      tags: ['always']

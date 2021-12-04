@@ -2,6 +2,7 @@
 downloads: "{{ ansible_env.HOME }}/Downloads/"
 
 homebrew_installed_packages:
+  - duti
   - mas
   - ssh-copy-id
   - trash
@@ -15,3 +16,21 @@ homebrew_taps:
 mas_installed_apps: []
 mas_email: ""
 mas_password: ""
+
+default_apps_associations:
+  # Sublime text
+  - bundle_id: com.sublimetext.3
+    utis:
+      - public.plain-text
+      - yml
+      - md
+
+dotfiles_home: "~"
+dotfiles_files:
+  - .zshrc
+  - .zprofile
+
+sublime_base_path: '~/Library/Application Support/Sublime Text 3'
+sublime_config_path: "Packages/User"
+sublime_package_control:
+  - "JSONLint"
