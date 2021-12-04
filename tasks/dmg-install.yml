@@ -1,0 +1,26 @@
+# Install App from dmg
+# https://github.com/sandstorm/macosx-with-ansible/blob/master/tasks/dmg-install.yml
+
+---
+- local_action: stat path='/Applications/{{ appName }}.app'
+  register: app_exists
+
+- name: Download {{ appName }} dmg
+  get_url: url={{ dmgURL }} dest='{{ downloads }}/{{ appName }}.dmg'
+  when: app_exists.stat.exists == False
+
+- name: Mount {{ appName }} installer
+  command: hdiutil attach '{{ downloads }}/{{ appName }}.dmg' -nobrowse -mountpoint '{{ downloads }}/{{ appName }}'
+  when: app_exists.stat.exists == False
+
+- name: Install {{ appName }}
+  shell: cp -aR '{{ downloads }}/{{ appName }}/{{ appName }}.app' '/Applications/{{ appName }}.app'
+  when: app_exists.stat.exists == False
+
+- name: Unmount {{ appName }}
+  command: hdiutil detach '{{ downloads }}/{{ appName }}/'
+  when: app_exists.stat.exists == False
+
+- name: Remove {{ appName }} dmg
+  command: rm '{{ downloads }}/{{ appName }}.dmg'
+  when: app_exists.stat.exists == False

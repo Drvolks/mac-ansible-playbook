@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  user: jfdufour
+  connection: local
+
+  vars_files:
+    - vars/main.yml
+
+  roles: []
+
+  tasks:
+    - name: Upgrade all homebrew packages
+      homebrew: update_homebrew=yes upgrade_all=yes
+
+    - name: Install homebrew packages
+      homebrew:
+        name: "{{ item.name | default(item) }}"
+        install_options: "{{ item.install_options | default(omit) }}"
+        state: "{{ item.state | default('present') }}"
+      loop: "{{ homebrew_installed_packages }}"
+
+    - include: tasks/dmg-install.yml appName="Sublime Text" dmgURL=https://download.sublimetext.com/Sublime%20Text%20Build%203211.dmg

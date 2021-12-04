@@ -1,0 +1,17 @@
+---
+downloads: "{{ ansible_env.HOME }}/Downloads/"
+
+homebrew_installed_packages:
+  - mas
+  - ssh-copy-id
+  - trash
+
+homebrew_cask_appdir: /Applications
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
