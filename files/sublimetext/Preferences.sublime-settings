@@ -1,5 +1,8 @@
-// Settings in here override those in "Default/Preferences.sublime-settings",
-// and are overridden in turn by syntax-specific settings.
 {
-	
+	"gpu_window_buffer": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"update_check": false
 }
