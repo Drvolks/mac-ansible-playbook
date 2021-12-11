@@ -95,3 +95,5 @@ dockitems_persist:
    path: "/System/Applications/Home.app"
  - name: "Zwift"
    pos: 16
+ - name: "Screens 4"
+   pos: 17
