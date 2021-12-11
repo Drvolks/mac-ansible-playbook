@@ -11,10 +11,13 @@ homebrew_installed_packages:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - backblaze
   - balenaetcher
+  - carbon-copy-cloner
   - google-chrome
   - istat-menus
   - screens
+  - screens-connect
   - transmit
   - virtualbox
   - virtualbox-extension-pack
