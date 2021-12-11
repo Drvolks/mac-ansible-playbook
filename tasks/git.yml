@@ -3,6 +3,7 @@
   ansible.builtin.command: "git config --global user.name"
   register: gitname_exists
   changed_when: false
+  failed_when: false
 
 - name: Setup git user.name
   command: git config --global --replace-all user.name '{{ full_name }}'
@@ -12,6 +13,7 @@
   ansible.builtin.command: "git config --global user.email"
   register: gitemail_exists
   changed_when: false
+  failed_when: false
 
 - name: Setup git user.email
   command: git config --global --replace-all user.email  {{ email }}
@@ -21,6 +23,7 @@
   ansible.builtin.command: "git config --global pull.rebase"
   register: gitpull_exists
   changed_when: false
+  failed_when: false
 
 - name: Setup git pull.rebase
   command: git config --global --replace-all pull.rebase true
