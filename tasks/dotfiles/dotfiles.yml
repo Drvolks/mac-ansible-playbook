@@ -1,0 +1,4 @@
+---
+- name: Install dotfiles
+  ansible.builtin.include_tasks: dotfile-add.yml
+  loop: "{{ dotfiles_files }}"

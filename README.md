@@ -7,10 +7,11 @@ xcode-select --install
 brew install ansible
 
 ## Execution
-ansible-playbook playbook.yml --tags work,home
+ansible-playbook playbook.yml
 
-## Missing apps
-Choosey
+## Update encrypted values
+ansible-vault decrypt vars/personal_info.yml 
+ansible-vault encrypt vars/personal_info.yml
 
 ## References
 https://github.com/geerlingguy/mac-dev-playbook

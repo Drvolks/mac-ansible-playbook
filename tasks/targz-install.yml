@@ -1,0 +1,19 @@
+---
+- local_action: stat path='/Applications/{{ appName }}'
+  register: app_exists
+
+- name: Download {{ appName }} tar
+  get_url: url={{ dmgURL }} dest='{{ downloads }}/{{ appName }}.tar.gz'
+  when: app_exists.stat.exists == False
+
+- name: Untar {{ appName }}
+  command: tar -C {{ downloads }} -xvf '{{ downloads }}/{{ appName }}.tar.gz'
+  when: app_exists.stat.exists == False
+
+- name: Install {{ appName }}
+  shell: mv '{{ downloads }}/{{ appName }}' '/Applications/{{ appName }}'
+  when: app_exists.stat.exists == False
+
+- name: Remove {{ appName }} tar
+  command: rm '{{ downloads }}/{{ appName }}.tar.gz'
+  when: app_exists.stat.exists == False

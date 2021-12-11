@@ -1,0 +1,13 @@
+---
+- local_action: stat path='{{ dotfiles_home }}/{{ item }}'
+  register: dotfile_exists
+
+- name: "Check if dotfile {{ item }} needs to be installed"
+  ansible.builtin.command: "diff dotfiles/{{ item }} {{ dotfiles_home }}/{{ item }}"
+  register: dotfile_changed
+  when: dotfile_exists.stat.exists == True
+  changed_when: false
+
+- name: Copy {{ item }} into home folder.
+  command: cp dotfiles/{{ item }} {{ dotfiles_home }}/{{ item }}
+  when: dotfile_exists.stat.exists == False or dotfile_changed.rc >0

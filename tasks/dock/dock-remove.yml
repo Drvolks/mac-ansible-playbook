@@ -1,0 +1,19 @@
+---
+- name: "Check if Dock item {{ item.name }} is already in the dock."
+  ansible.builtin.command:
+    cmd: dockutil --find '{{ item.name }}'
+  register: dockitem_exists
+  changed_when: false
+  failed_when: >
+    "No such file or directory" in dockitem_exists.stdout
+    or "command not found" in dockitem_exists.stdout
+
+- name: Ensure Dock item {{ item.name }} is removed.
+  ansible.builtin.command:
+    cmd: dockutil --remove '{{ item.name }}' --no-restart
+  when: dockitem_exists.rc == 0
+
+- name: Set dock removed item status
+  set_fact:
+    removed_dock_item: true
+  when: dockitem_exists.rc == 0

@@ -1,0 +1,25 @@
+---
+- name: Set initial dock status
+  set_fact:
+    removed_dock_item: false
+    added_dock_item: false
+    sorted_dock_item: false
+
+- name: Remove configured Dock items.
+  ansible.builtin.include_tasks: dock-remove.yml
+  loop: "{{ dockitems_remove }}"
+  
+- name: Ensure required dock items exist.
+  ansible.builtin.include_tasks: dock-add.yml
+  loop: "{{ dockitems_persist }}"
+
+- name: Ensure dock items are in correct position.
+  ansible.builtin.include_tasks: dock-pos.yml
+  when:
+    - item.pos is defined
+    - item.pos > 0
+  loop: "{{ dockitems_persist }}"
+
+- name: Restart dock
+  command: killall Dock
+  when: removed_dock_item == True or added_dock_item == True or sorted_dock_item == True

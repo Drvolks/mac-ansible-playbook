@@ -1,6 +1,5 @@
 ---
 - include: dmg-install.yml appName="Sublime Text" dmgURL=https://download.sublimetext.com/Sublime%20Text%20Build%203211.dmg
-  tags: ['always']
 
 - name: Ensure Sublime Text directories exist.
   file:

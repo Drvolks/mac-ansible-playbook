@@ -2,22 +2,36 @@
 downloads: "{{ ansible_env.HOME }}/Downloads/"
 
 homebrew_installed_packages:
+  - dockutil
   - duti
   - mas
   - ssh-copy-id
   - trash
 
-mas_installed_apps: []
-mas_email: ""
-mas_password: ""
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - virtualbox
+  - virtualbox-extension-pack
 
+# osascript -e 'id of app "App Name"'
 default_apps_associations:
-  # Sublime text
   - bundle_id: com.sublimetext.3
     utis:
-      - public.plain-text
-      - yml
-      - md
+      - .txt
+      - .yml
+      - .md
+      - .xml
+  - bundle_id: com.eltima.elmedia6.mas
+    utis:
+      - .mp4
+      - .mkv
+      - .mov
+  - bundle_id: com.aone.keka
+    utis:
+      - .zip
+      - .tar
+      - .gz
+      - .rar
 
 dotfiles_home: "~"
 dotfiles_files:
@@ -27,4 +41,50 @@ dotfiles_files:
 sublime_base_path: '~/Library/Application Support/Sublime Text 3'
 sublime_config_path: "Packages/User"
 sublime_package_control:
-  - "JSONLint"
+  - "Pretty JSON"
+
+dockitems_remove:
+  - name: "Launchpad"
+    path: "/System/Applications/Launchpad.app"
+dockitems_persist:
+ - name: "App Store"
+   pos: 1
+   path: "/System/Applications/App Store.app"
+ - name: "1Password 7"
+   pos: 2
+ - name: "Safari"
+   pos: 3
+ - name: "Messages"
+   pos: 4
+   path: "/System/Applications/Messages.app"
+ - name: "Mail"
+   pos: 5
+   path: "/System/Applications/Mail.app"
+ - name: "Tweetbot"
+   pos: 6
+ - name: "Reeder"
+   pos: 7
+ - name: "Photos"
+   pos: 8
+   path: "/System/Applications/Photos.app"
+ - name: "Notes"
+   pos: 9
+   path: "/System/Applications/Notes.app"
+ - name: "Music"
+   pos: 10
+   path: "/System/Applications/Music.app"
+ - name: "News"
+   pos: 11
+   path: "/System/Applications/News.app"
+ - name: "Terminal"
+   pos: 12
+   path: "/System/Applications/Utilities/Terminal.app"
+ - name: "Sublime Text"
+   pos: 13
+ - name: "Numbers"
+   pos: 14
+ - name: "Home"
+   pos: 15
+   path: "/System/Applications/Home.app"
+ - name: "Zwift"
+   pos: 16

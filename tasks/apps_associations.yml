@@ -1,0 +1,14 @@
+--- 
+- name: check file type association
+  shell: "duti -x {{ item.1 }} | awk 'FNR == 3'"
+  with_subelements:
+    - "{{ default_apps_associations }}"
+    - utis
+  changed_when: false
+  failed_when: false
+  register: duti_output
+
+- name: update file type association
+  command: "duti -s {{ item.item.0.bundle_id }} {{ item.item.1 }} all"
+  with_items: "{{ duti_output.results | list }}"
+  when: item.stdout != item.item.0.bundle_id.lower()

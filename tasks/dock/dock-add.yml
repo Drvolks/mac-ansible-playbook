@@ -1,0 +1,24 @@
+---
+- name: "Check if Dock item {{ item.name }} is already in the dock."
+  ansible.builtin.command: "dockutil --find '{{ item.name }}'"
+  register: dockitem_exists
+  failed_when: >
+    "No such file or directory" in dockitem_exists.stdout
+    or "command not found" in dockitem_exists.stdout
+  changed_when: false
+
+- set_fact: 
+    app_path: "/Applications/{{ item.name }}.app"
+
+- set_fact: 
+    app_path: "{{ item.path }}"
+  when: item.path is defined
+
+- name: Add dock item {{ item.name }} pointing to {{ app_path }}
+  ansible.builtin.command: "dockutil --add '{{ app_path }}' --no-restart"
+  when: dockitem_exists.rc >0
+
+- name: Set dock add status
+  set_fact:
+    added_dock_item: true
+  when: dockitem_exists.rc >0
