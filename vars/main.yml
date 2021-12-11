@@ -5,13 +5,20 @@ homebrew_installed_packages:
   - dockutil
   - duti
   - mas
+  - maven
   - ssh-copy-id
   - trash
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - balenaetcher
+  - google-chrome
+  - istat-menus
+  - screens
+  - transmit
   - virtualbox
   - virtualbox-extension-pack
+  - zwift
 
 # osascript -e 'id of app "App Name"'
 default_apps_associations:

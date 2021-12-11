@@ -7,6 +7,7 @@
   register: dotfile_changed
   when: dotfile_exists.stat.exists == True
   changed_when: false
+  failed_when: false
 
 - name: Copy {{ item }} into home folder.
   command: cp dotfiles/{{ item }} {{ dotfiles_home }}/{{ item }}
