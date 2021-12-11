@@ -3,6 +3,7 @@
   ansible.builtin.command: /usr/libexec/PlistBuddy -c "Print :StandardViewSettings:IconViewSettings:arrangeBy" ~/Library/Preferences/com.apple.finder.plist
   register: findersort_value
   changed_when: false
+  failed_when: false
 
 - name: Finder default sort
   command: /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
@@ -13,6 +14,7 @@
   ansible.builtin.command: defaults read com.apple.finder NewWindowTargetPath
   register: findertarget_value
   changed_when: false
+  failed_when: false
 
 - name: Finder default folder
   command: defaults write com.apple.finder NewWindowTargetPath -string "file://localhost/Applications"
