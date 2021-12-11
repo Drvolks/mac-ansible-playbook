@@ -8,7 +8,6 @@
 - name: Finder default sort
   command: /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
   when: findersort_value.stdout != 'name'
-  register: findersort_result
 
 - name: "Check if finder default sorting is by name"
   ansible.builtin.command: defaults read com.apple.finder NewWindowTargetPath
@@ -19,9 +18,8 @@
 - name: Finder default folder
   command: defaults write com.apple.finder NewWindowTargetPath -string "file://localhost/Applications"
   when: findertarget_value.stdout != 'file://localhost/Applications'
-  register: findertarget_result
 
 - name: Restart finder
   command: killall Finder
-  when: findersort_result.skipped == False or findertarget_result.skipped == False
+  when: findersort_value.stdout != 'name' or findertarget_value.stdout != 'file://localhost/Applications'
   
