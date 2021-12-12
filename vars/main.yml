@@ -55,7 +55,14 @@ sublime_package_control:
 
 dockitems_remove:
   - name: "Launchpad"
-    path: "/System/Applications/Launchpad.app"
+  - name: "Maps"
+  - name: "FaceTime"
+  - name: "TV"
+  - name: "Calendar"
+  - name: "Contacts"
+  - name: "Reminders"
+  - name: "Podcasts"
+  - name: "System Preferences"
 dockitems_persist:
  - name: "App Store"
    pos: 1
