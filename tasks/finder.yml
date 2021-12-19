@@ -16,10 +16,10 @@
   failed_when: false
 
 - name: Finder default folder
-  command: defaults write com.apple.finder NewWindowTargetPath -string "file://localhost/Applications"
-  when: findertarget_value.stdout != 'file://localhost/Applications'
+  command: defaults write com.apple.finder NewWindowTargetPath -string "file:///Applications/"
+  when: findertarget_value.stdout != 'file:///Applications/'
 
 - name: Restart finder
   command: killall Finder
-  when: findersort_value.stdout != 'name' or findertarget_value.stdout != 'file://localhost/Applications'
+  when: findersort_value.stdout != 'name' or findertarget_value.stdout != 'file:///Applications/'
   
