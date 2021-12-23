@@ -1,0 +1,12 @@
+version: "3"
+services:
+  runner:
+    # build: . # If you want to Build the Image locally (You need the complete Repo on your PC)
+    image: buddyspencer/gickup:latest
+    volumes:
+      - /Users/jfdufour/.ssh/id_ed25519:/gickup/id_ed25519
+      - /Users/jfdufour/.ssh/known_hosts:/.ssh/known_hosts
+      - /Users/jfdufour/gickup:/gickup/destination
+      - ${PWD}/conf.yml:/gickup/conf.yml
+    command: ["./gickup/app", "/gickup/conf.yml"]
+    restart: unless-stopped
