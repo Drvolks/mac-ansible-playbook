@@ -8,6 +8,7 @@ homebrew_installed_packages:
   - maven
   - ssh-copy-id
   - trash
+  - wget
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
