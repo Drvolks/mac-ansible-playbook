@@ -32,3 +32,13 @@
   command: cp files/ssh/config {{ ssh_home }}/config
   when: sshconfig_changed.rc >0
   
+- name: "Check if ssh server is enabled"
+  ansible.builtin.command: "sudo systemsetup -getremotelogin"
+  register: sshserver_result
+  changed_when: false
+  become: true
+
+- name: Enable ssh server
+  command: sudo systemsetup -setremotelogin on
+  when: sshserver_result.rc >0 or sshserver_result.stdout.find('On') == -1
+  become: true
