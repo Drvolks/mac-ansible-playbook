@@ -1,4 +1,8 @@
 ---
+#
+# https://github.com/cooperspencer/gickup
+#
+
 - local_action: stat path='{{ gickup_home }}'
   register: gickupdir_exists
 
