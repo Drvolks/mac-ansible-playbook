@@ -19,7 +19,16 @@
   changed_when: false
   failed_when: false
 
+- name: "Check if gickup run.sh file needs to be updated"
+  ansible.builtin.command: "diff files/gickup/run.sh {{ gickup_home }}/run.sh"
+  register: gickuprun_changed
+  changed_when: false
+  failed_when: false
+
 - name: Copy gickup docker compose into {{ gickup_home }}
   command: cp files/gickup/docker-compose.yml {{ gickup_home }}/docker-compose.yml
   when: gickupdocker_changed.rc >0
-  
+
+- name: Copy gickup run.sh into {{ gickup_home }}
+  command: cp files/gickup/run.sh {{ gickup_home }}/run.sh
+  when: gickuprun_changed.rc >0
