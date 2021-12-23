@@ -1,0 +1,34 @@
+---
+- local_action: stat path='{{ ssh_home }}'
+  register: sshdir_exists
+
+- name: "Create {{ ssh_home }}"
+  ansible.builtin.command: "mkdir {{ ssh_home }}"
+  when: sshdir_exists.stat.exists == False
+
+- local_action: stat path='{{ ssh_home }}/id_rsa'
+  register: sshkey1_exists
+
+- local_action: stat path='{{ ssh_home }}/id_ed25519'
+  register: sshkey2_exists
+
+- name: "Generate ssh key"
+  shell: < /dev/zero ssh-keygen -q -N ""
+  register: sshkeygen1_changed
+  when: sshkey1_exists.stat.exists == False
+
+- name: "Generate github ssh key"
+  shell: < /dev/zero ssh-keygen -t ed25519 -C "{{ email }}" -q -N ""
+  register: sshkeygen2_changed
+  when: sshkey2_exists.stat.exists == False
+
+- name: "Check if ssh config needs to be installed"
+  ansible.builtin.command: "diff files/ssh/config {{ ssh_home }}/config"
+  register: sshconfig_changed
+  changed_when: false
+  failed_when: false
+
+- name: Copy ssh config into {{ ssh_home }}
+  command: cp files/ssh/config {{ ssh_home }}/config
+  when: sshconfig_changed.rc >0
+  

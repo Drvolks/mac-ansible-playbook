@@ -42,6 +42,8 @@
 
     - import_tasks: tasks/finder.yml
 
+    - import_tasks: tasks/ssh.yml
+
     - import_tasks: tasks/dock/dock.yml
 
     
