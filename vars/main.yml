@@ -51,6 +51,8 @@ dotfiles_files:
 
 ssh_home: "~/.ssh"
 
+gickup_home: "~/gickup"
+
 sublime_base_path: '~/Library/Application Support/Sublime Text 3'
 sublime_config_path: "Packages/User"
 sublime_package_control:

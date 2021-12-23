@@ -1,0 +1,25 @@
+---
+- local_action: stat path='{{ gickup_home }}'
+  register: gickupdir_exists
+
+- name: "Create {{ gickup_home }}"
+  ansible.builtin.command: "mkdir {{ gickup_home }}"
+  when: gickupdir_exists.stat.exists == False
+
+- local_action: stat path='{{ gickup_home }}/conf.yml'
+  register: gickupconfig_exists
+
+- name: "Copy gickup config"
+  command: cp files/gickup/conf.yml {{ gickup_home }}/conf.yml
+  when: gickupconfig_exists.stat.exists == False
+
+- name: "Check if gickup docker compose file needs to be updated"
+  ansible.builtin.command: "diff files/gickup/docker-compose.yml {{ gickup_home }}/docker-compose.yml"
+  register: gickupdocker_changed
+  changed_when: false
+  failed_when: false
+
+- name: Copy gickup docker compose into {{ gickup_home }}
+  command: cp files/gickup/docker-compose.yml {{ gickup_home }}/docker-compose.yml
+  when: gickupdocker_changed.rc >0
+  
