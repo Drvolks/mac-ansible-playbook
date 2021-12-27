@@ -5,7 +5,7 @@ services:
     image: buddyspencer/gickup:latest
     volumes:
       - /Users/jfdufour/.ssh/id_ed25519:/gickup/id_ed25519
-      - /Users/jfdufour/gickup/known_hosts:/.ssh/known_hosts
+      - /Users/jfdufour/gickup/ssh:/.ssh
       - /Users/jfdufour/gickup:/gickup/destination
       - ${PWD}/conf.yml:/gickup/conf.yml
     command: ["./gickup/app", "/gickup/conf.yml"]

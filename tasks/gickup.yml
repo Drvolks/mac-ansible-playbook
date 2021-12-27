@@ -36,3 +36,10 @@
 - name: Copy gickup run.sh into {{ gickup_home }}
   command: cp files/gickup/run.sh {{ gickup_home }}/run.sh
   when: gickuprun_changed.rc >0
+
+- local_action: stat path='{{ gickup_home }}'/ssh
+  register: gickupsshdir_exists
+
+- name: "Create {{ gickup_home }}/ssh"
+  ansible.builtin.command: "mkdir {{ gickup_home }}/ssh"
+  when: gickupsshdir_exists.stat.exists == False
