@@ -19,6 +19,7 @@ homebrew_cask_apps:
   - istat-menus
   - screens
   - screens-connect
+  - sublime-merge
   - transmit
   - virtualbox
   - virtualbox-extension-pack
