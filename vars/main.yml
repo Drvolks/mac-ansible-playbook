@@ -23,6 +23,7 @@ homebrew_cask_apps:
   - transmit
   - virtualbox
   - virtualbox-extension-pack
+  - visual-studio-code
   - zwift
 
 # osascript -e 'id of app "App Name"'
