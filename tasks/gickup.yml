@@ -37,7 +37,7 @@
   command: cp files/gickup/run.sh {{ gickup_home }}/run.sh
   when: gickuprun_changed.rc >0
 
-- local_action: stat path='{{ gickup_home }}'/ssh
+- local_action: stat path='{{ gickup_home }}/ssh'
   register: gickupsshdir_exists
 
 - name: "Create {{ gickup_home }}/ssh"
