@@ -30,6 +30,7 @@ homebrew_cask_apps:
 default_apps_associations:
   - bundle_id: com.sublimetext.3
     utis:
+      - .json
       - .txt
       - .yml
       - .md
