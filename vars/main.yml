@@ -17,6 +17,7 @@ homebrew_cask_apps:
   - carbon-copy-cloner
   - google-chrome
   - istat-menus
+  - private-internet-access
   - screens
   - screens-connect
   - sublime-merge
