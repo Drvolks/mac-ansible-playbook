@@ -5,6 +5,7 @@ homebrew_installed_packages:
   - dockutil
   - duti
   - mas
+  - nmap
   - maven
   - ssh-copy-id
   - trash
