@@ -15,6 +15,7 @@ homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - backblaze
   - balenaetcher
+  - calibre
   - carbon-copy-cloner
   - google-chrome
   - istat-menus
