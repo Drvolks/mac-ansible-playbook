@@ -7,6 +7,7 @@ homebrew_installed_packages:
   - mas
   - nmap
   - maven
+  - rust
   - ssh-copy-id
   - trash
   - wget
