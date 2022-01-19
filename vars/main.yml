@@ -21,6 +21,7 @@ homebrew_cask_apps:
   - carbon-copy-cloner
   - google-chrome
   - istat-menus
+  - monitorcontrol
   - private-internet-access
   - screens
   - screens-connect
