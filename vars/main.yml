@@ -10,12 +10,14 @@ homebrew_installed_packages:
   - rust
   - ssh-copy-id
   - trash
+  - watch
   - wget
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - backblaze
   - balenaetcher
+  - betterzip
   - beyond-compare
   - calibre
   - carbon-copy-cloner
