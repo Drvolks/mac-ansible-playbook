@@ -7,8 +7,6 @@ homebrew_installed_packages:
   - mas
   - nmap
   - maven
-  - rust
-  - ssh-copy-id
   - trash
   - watch
   - wget
@@ -27,6 +25,7 @@ homebrew_cask_apps:
   - private-internet-access
   - screens
   - screens-connect
+  - stay
   - sublime-merge
   - transmit
   - virtualbox
