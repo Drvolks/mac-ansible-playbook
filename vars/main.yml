@@ -10,6 +10,7 @@ homebrew_installed_packages:
   - trash
   - watch
   - wget
+  - youtube-dl
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
