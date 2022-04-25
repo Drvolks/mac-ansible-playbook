@@ -22,6 +22,7 @@ homebrew_cask_apps:
   - google-chrome
   - istat-menus
   - monitorcontrol
+  - plex-media-server
   - private-internet-access
   - screens
   - screens-connect
