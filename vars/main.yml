@@ -30,8 +30,6 @@ homebrew_cask_apps:
   - stay
   - sublime-merge
   - transmit
-  - virtualbox
-  - virtualbox-extension-pack
   - visual-studio-code
   - zwift
 
