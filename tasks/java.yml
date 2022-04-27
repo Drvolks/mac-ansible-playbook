@@ -1,7 +1,7 @@
 ---
-- include: tasks/targz-install.yml appName="jdk-17.0.1.jdk" dmgURL=https://download.oracle.com/java/17/latest/jdk-17_macos-x64_bin.tar.gz
+- include: tasks/targz-install.yml appName="jdk-17.0.3.jdk" dmgURL=https://download.oracle.com/java/17/latest/jdk-17_macos-x64_bin.tar.gz
 
-- local_action: stat path='/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk'
+- local_action: stat path='/Library/Java/JavaVirtualMachines/jdk-17.0.3.jdk'
   register: java_link_exists
 
 - name: Add jdk-17.0.3.jdk to JavaVirtualMachines
