@@ -2,12 +2,27 @@
 - local_action: stat path='/Applications/{{ appName }}'
   register: app_exists
 
+- local_action: stat path='/{{ downloads }}/{{ appName }}'
+  register: temp_dir_exists
+
 - name: Download {{ appName }} tar
   get_url: url={{ dmgURL }} dest='{{ downloads }}/{{ appName }}.tar.gz'
   when: app_exists.stat.exists == False
 
+- name: Create directory {{ downloads }}/{{ appName }}
+  command: mkdir '{{ downloads }}/{{ appName }}'
+  when: temp_dir_exists.stat.exists == False
+
+#- name: Untar {{ appName }}
+#  command: tar -C {{ downloads }} -xvf '{{ downloads }}/{{ appName }}.tar.gz'
+#  when: app_exists.stat.exists == False
+
+- name: Gunzip {{ appName }}
+  command: gunzip '{{ downloads }}/{{ appName }}.tar.gz'
+  when: app_exists.stat.exists == False
+
 - name: Untar {{ appName }}
-  command: tar -C {{ downloads }} -xvf '{{ downloads }}/{{ appName }}.tar.gz'
+  command: tar xf '{{ downloads }}/{{ appName }}.tar' -C '{{ downloads }}/{{ appName }}' --strip-components 2
   when: app_exists.stat.exists == False
 
 - name: Install {{ appName }}
@@ -15,5 +30,5 @@
   when: app_exists.stat.exists == False
 
 - name: Remove {{ appName }} tar
-  command: rm '{{ downloads }}/{{ appName }}.tar.gz'
+  command: rm '{{ downloads }}/{{ appName }}.tar'
   when: app_exists.stat.exists == False

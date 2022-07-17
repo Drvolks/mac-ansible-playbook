@@ -4,7 +4,6 @@ downloads: "{{ ansible_env.HOME }}/Downloads/"
 homebrew_installed_packages:
   - dockutil
   - duti
-  - mas
   - nmap
   - maven
   - trash
@@ -14,6 +13,7 @@ homebrew_installed_packages:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - airbuddy
   - backblaze
   - balenaetcher
   - betterzip
@@ -23,19 +23,38 @@ homebrew_cask_apps:
   - google-chrome
   - istat-menus
   - monitorcontrol
-  - plex-media-server
   - private-internet-access
+  - raspberry-pi-imager
   - screens
   - screens-connect
   - stay
-  - sublime-merge
+  - steam
   - transmit
   - visual-studio-code
   - zwift
 
+mas_apps:
+  - 1Password 7
+  - Amphetamine
+  - Blackmagic Disk Speed Test
+  - Calcbot
+  - Deliveries
+  - Elmedia Video Player
+  - Hush
+  - Keka
+  - Mela
+  - Numbers
+  - Paprika Recipe Manager
+  - Pi-hole Remote
+  - Pixelmator Pro
+  - Reeder
+  - Speedtest
+  - Tweetbot
+  - Xcode
+
 # osascript -e 'id of app "App Name"'
 default_apps_associations:
-  - bundle_id: com.sublimetext.3
+  - bundle_id: com.microsoft.VSCode
     utis:
       - .json
       - .txt
@@ -111,7 +130,7 @@ dockitems_persist:
  - name: "Terminal"
    pos: 12
    path: "/System/Applications/Utilities/Terminal.app"
- - name: "Sublime Text"
+ - name: "Visual Studio Code"
    pos: 13
  - name: "Numbers"
    pos: 14
@@ -122,3 +141,5 @@ dockitems_persist:
    pos: 16
  - name: "Screens 4"
    pos: 17
+ - name: "Mela"
+   pos: 18

@@ -28,9 +28,9 @@
         sudo_password: "{{ ansible_become_pass | default(omit) }}"
       loop: "{{ homebrew_cask_apps }}"
 
-    - include: tasks/dmg-install.yml appName="handyPrint" dmgURL=https://s3.amazonaws.com/netputing/handyPrint/handyPrint+v5.5.0.dmg
+    # - include: tasks/dmg-install.yml appName="handyPrint" dmgURL=https://s3.amazonaws.com/netputing/handyPrint/handyPrint+v5.5.0.dmg
 
-    - import_tasks: tasks/sublimetext.yml
+    # - import_tasks: tasks/sublimetext.yml
 
     - import_tasks: tasks/apps_associations.yml
 
@@ -44,7 +44,7 @@
 
     - import_tasks: tasks/ssh.yml
 
-    - import_tasks: tasks/gickup.yml
+    # - import_tasks: tasks/gickup.yml
 
     - import_tasks: tasks/dock/dock.yml
 
