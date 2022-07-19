@@ -21,6 +21,7 @@ homebrew_cask_apps:
   - calibre
   - carbon-copy-cloner
   - google-chrome
+  - handbrake
   - istat-menus
   - monitorcontrol
   - private-internet-access
