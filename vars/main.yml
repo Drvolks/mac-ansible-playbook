@@ -24,13 +24,13 @@ homebrew_cask_apps:
   - handbrake
   - istat-menus
   - monitorcontrol
-  - private-internet-access
   - raspberry-pi-imager
   - screens
   - screens-connect
   - stay
   - steam
   - transmit
+  - viscosity
   - visual-studio-code
   - zwift
 
