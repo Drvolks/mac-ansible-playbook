@@ -10,7 +10,7 @@ brew install ansible
 
 ## Execution
 ```
-ansible-playbook playbook.yml --ask-vault-pass
+./run.sh
 ```
 
 ## Update encrypted values
