@@ -9,7 +9,7 @@ homebrew_installed_packages:
   - trash
   - watch
   - wget
-  - youtube-dl
+  - yt-dlp
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -23,7 +23,6 @@ homebrew_cask_apps:
   - google-chrome
   - handbrake
   - istat-menus
-  - monitorcontrol
   - raspberry-pi-imager
   - screens
   - screens-connect
