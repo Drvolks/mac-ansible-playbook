@@ -23,6 +23,7 @@ homebrew_cask_apps:
   - google-chrome
   - handbrake
   - istat-menus
+  - private-internet-access
   - raspberry-pi-imager
   - screens
   - screens-connect
