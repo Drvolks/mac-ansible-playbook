@@ -1,10 +1,6 @@
 ---
 downloads: "{{ ansible_env.HOME }}/Downloads/"
 
-homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
-homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
-homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
-
 homebrew_installed_packages:
   - dockutil
   - duti
@@ -27,6 +23,7 @@ homebrew_cask_apps:
   - google-chrome
   - handbrake
   - istat-menus
+  - private-internet-access
   - raspberry-pi-imager
   - screens
   - screens-connect
