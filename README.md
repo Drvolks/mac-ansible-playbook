@@ -1,12 +1,15 @@
 # mac-ansible-playbook
 
 ## Setup
-Install brew https://brew.sh
+- Install brew https://brew.sh
 
 ```
 xcode-select --install
 brew install ansible
 ```
+
+- Install Rosetta
+- Allow terminal to modify apps & full disk access in Settings
 
 ## Execution
 ```

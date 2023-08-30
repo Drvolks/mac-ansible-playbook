@@ -13,25 +13,18 @@ homebrew_installed_packages:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - airbuddy
   - backblaze
   - balenaetcher
   - betterzip
   - beyond-compare
-  - calibre
   - carbon-copy-cloner
   - google-chrome
   - handbrake
-  - istat-menus
   - nvidia-geforce-now
   - private-internet-access
   - raspberry-pi-imager
-  - screens
-  - screens-connect
-  - stay
   - steam
   - transmit
-  - viscosity
   - visual-studio-code
   - zwift
 
