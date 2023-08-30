@@ -26,6 +26,7 @@ homebrew_cask_apps:
   - steam
   - transmit
   - visual-studio-code
+  - whisky
   - zwift
 
 mas_apps:
