@@ -24,8 +24,8 @@ homebrew_cask_apps:
   - private-internet-access
   - raspberry-pi-imager
   - steam
+  - sublime-text
   - transmit
-  - visual-studio-code
   - whisky
   - zwift
 
@@ -50,7 +50,7 @@ mas_apps:
 
 # osascript -e 'id of app "App Name"'
 default_apps_associations:
-  - bundle_id: com.microsoft.VSCode
+  - bundle_id: com.sublimetext.4
     utis:
       - .json
       - .txt
